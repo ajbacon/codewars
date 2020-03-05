@@ -21,12 +21,12 @@ describe '.field_validator' do
 
     it 'should return the ship length if it is valid and oriented horizontally' do
       field = field_example('valid_ship_2v')
-      expect(valid_ship([1, 4], field)).to eq(2)
+      expect(valid_ship([2, 4], field)).to eq(2)
     end
-
-    # it 'should return null if the ship is not valid' do
-    #   expect(valid_ship([1, 4], valid_ship_2v)).to eq(2)
-    # end
+    it 'should return nil if the ship is not valid' do
+      field = field_example('invalid_ship_4h')
+      expect(valid_ship([1, 1], field)).to eq(nil)
+    end
   end
 end
 
