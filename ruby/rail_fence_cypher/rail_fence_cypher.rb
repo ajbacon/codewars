@@ -80,6 +80,10 @@ describe 'decode_rail_fence_cipher' do
     expect(decode_rail_fence_cipher('WECRLTEERDSOEEFEAOCAIVDEN', 3)).to eq('WEAREDISCOVEREDFLEEATONCE')
   end
 
+  it "should decode ('agbfced', 4) to abcdefg" do
+    expect(decode_rail_fence_cipher('agbfced', 4)).to eq('abcdefg')
+  end
+
 end
 
 
