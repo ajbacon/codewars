@@ -8,6 +8,7 @@ def encode_rail_fence_cipher(str, num_rails)
 end
 
 def decode_rail_fence_cipher(str, num_rails)
+  return "" if str === ""
   str_arr = str.split("")
   positions_arr = positions(str.length, num_rails)
 
@@ -42,19 +43,24 @@ end
 
 
 describe '.encode' do
-  it "should return the same string with input of" do
+
+  it "should return empty string if passed an empty string" do
     expect(encode_rail_fence_cipher('a', 3)).to eq('a')
   end
 
-  it "should return the same string with input of" do
+  it "should return the same string with input of 'a" do
+    expect(encode_rail_fence_cipher('a', 3)).to eq('a')
+  end
+
+  it "should encode (abcde,3) correctly" do
     expect(encode_rail_fence_cipher('abcde', 3)).to eq('aebdc')
   end
 
-  it "should return the same string with input of" do
+  it "should encode ('WEAREDISCOVEREDFLEEATONCE', 3) correctly" do
     expect(encode_rail_fence_cipher('WEAREDISCOVEREDFLEEATONCE', 3)).to eq('WECRLTEERDSOEEFEAOCAIVDEN')
   end
 
-  it "should return the same string with input of" do
+  it "should encode ('abcdefg', 4) correctly" do
     expect(encode_rail_fence_cipher('abcdefg', 4)).to eq('agbfced')
   end
 
@@ -62,14 +68,17 @@ end
 
 describe 'decode_rail_fence_cipher' do
 
+  it "should return empty string if passed an empty string" do
+    expect(decode_rail_fence_cipher('', 3)).to eq('')
+  end
+
   it "should decode ('aebdc', 3) to abcde" do
     expect(decode_rail_fence_cipher('aebdc', 3)).to eq('abcde')
   end
 
-  it "should decode ('aebdc', 3) to abcde" do
+  it "should decode ('WECRLTEERDSOEEFEAOCAIVDEN', 3) to WEAREDISCOVEREDFLEEATONCE" do
     expect(decode_rail_fence_cipher('WECRLTEERDSOEEFEAOCAIVDEN', 3)).to eq('WEAREDISCOVEREDFLEEATONCE')
   end
-
 
 end
 
